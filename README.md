@@ -25,20 +25,26 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 Explain in detail the workings of a dynamic array:
 * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
 
-Access an array: (O(1))
-Reason: 
+Access an array: (`O(1)`)
+Reason: Arrays are the most efficient at accessing an element at a known index. You can jump to your index and return whatever's stored there.
 
-Add/remove from the front of an array: (O(n))
-Reason:
+Add/remove from the front of an array: (`O(n)`)
+Reason: Adding or removing from the front of an array requires shifting the rest of the elements.
 
-Add/remove from the back of an array: (O(1))
-Reason:
+Add/remove from the back of an array: (`O(1)`)
+Reason: Adding or removing from the back of an array does not require shifting the rest of the elements.
 
 * What is the worse case scenario if you try to extend the storage size of a dynamic array?
 
+Worst case scenario is if the dynamic array is full and another element is added, usually the dynamic array capacity will be set to double and remap all the old elements into the new array so it'll take `O(n)`.
+
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+
+Blockchains are structured such that each block is connected to a previous block (if not the genesis block) and to a next block (if found). Blocks are objects with certain identifying properties such as `index`, `timestamp`, `transactions`, `proof`, `previous_hash`. The chain includes the connected blocks in a Blockchain. Data is organized such that it acts as an open ledger in which anyone can access.
  
 Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+
+The proof of work concept requires significant computing for someone to be able to find a valid proof to create the next block in a Blockchain. Users are guessing proofs each of which are tested by hashing and comparing to a set requirement. If someone wanted to attack the chain and insert a new block in the middle, the chain is protected because they would have to also recalculate all subsequent blocks BEFORE anyone else finds a new block or else others would notice.
 
 ## Project Set Up
 
