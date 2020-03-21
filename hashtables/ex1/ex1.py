@@ -12,7 +12,23 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
-
+    # iterate over weights
+    for idx in range(length):
+        # check if corresponding weight to equal limit exists in hashtable
+        if hash_table_retrieve(ht, limit - weights[idx]) != None:
+            # return idx of both weights as:
+            # (larger_idx, smaller_idx)
+            if idx >= hash_table_retrieve(ht, limit - weights[idx]):
+                return (idx, hash_table_retrieve(ht, limit - weights[idx]))
+            else:
+                return (hash_table_retrieve(ht, limit - weights[idx]), idx)
+        # if corresponding weight does not exist, store current weight into hashtable
+        else:
+            # store weights in hash table such that:
+            # key = weight
+            # value = idx
+            hash_table_insert(ht, weights[idx], idx)
+    
     return None
 
 
